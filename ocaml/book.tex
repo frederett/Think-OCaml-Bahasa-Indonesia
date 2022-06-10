@@ -32,8 +32,9 @@
 \usepackage{hevea}                           
 \usepackage{upquote}
 
-\newcommand{\thetitle}{Think OCaml: How to Think Like a Computer Scientist}
+\newcommand{\thetitle}{Think OCaml: Berpikir (Fungsional) Seperti Ilmuwan Komputer}
 \newcommand{\theversion}{0.1.1}
+\renewcommand{\chaptername}{Bab}
 
 \makeindex
 
@@ -45,7 +46,7 @@
 
 \input{latexonly}
 
-\newtheorem{ex}{Exercise}[chapter]
+\newtheorem{ex}{Latihan}[chapter]
 
 \begin{latexonly}
 
@@ -64,12 +65,12 @@
 
 \begin{spacing}{3}
 {\huge Think OCaml}\\
-{\Large How to Think Like a Computer Scientist}
+{\Large Berpikir (Fungsional) Seperti Ilmuwan Komputer}
 \end{spacing}
 
 \vspace{0.25in}
 
-Version \theversion
+Versi \theversion
 
 \vfill
 
@@ -93,12 +94,12 @@ Version \theversion
 
 \begin{spacing}{3}
 {\huge Think OCaml}\\
-{\Large How to Think Like a Computer Scientist}
+{\Large Berpikir (Fungsional) Seperti Ilmuwan Komputer}
 \end{spacing}
 
 \vspace{0.25in}
 
-Version \theversion
+Versi \theversion
 
 \vspace{1in}
 
@@ -126,24 +127,24 @@ Version \theversion
 \thispagestyle{empty}
 
 {\small
-Copyright \copyright~2011 Nicholas Monje.
+Hak Cipta \copyright~2011 Nicholas Monje.
 
 
-Printing history:
+Riwayat Percetakan:
 
 \begin{description}
 
-\item[April 2002:] First edition of {\em How to Think Like
+\item[April 2002:] Edisi pertama dari {\em How to Think Like
 a Computer Scientist}.
 
-\item[August 2007:] Major revision, changed title to
+\item[Agustus 2007:] Revisi Major, perubahan judul menjadi
 {\em How to Think Like a (Python) Programmer}.
 
-\item[June 2008:] Major revision, changed title to
+\item[Juni 2008:] Revisi Major, perubahan judul menjadi
 {\em Think Python: How to Think Like
 a Computer Scientist}.
 
-\item[January 2011:] Translation to OCaml, changed title to
+\item[Januari 2011:] Terjemahaan untuk OCaml, perubahan judul menjadi
 {\em Think OCaml: How to Think Like a Computer Scientist}.
 
 \end{description}
@@ -193,19 +194,20 @@ Cover image is courtesy of Anumpama Kinagi, all rights reserved.
 {\large Nicholas Monje\\}
 {\large Allen Downey\\}
 
-Version \theversion
+Versi \theversion
 
 \setcounter{chapter}{-1}
 
+
 \end{htmlonly}
 
-\chapter{Preface}
+\chapter{Pengantar}
 
 % TODO(monje): write a preface :)
 
-\section*{Contributor List}
+\section*{Daftar Kontributor}
 
-Many thanks to Anumpama Kinagi for the use of the cover image.
+Terima kasih banyak untuk Anumpana Kinaga atas izin penggunaan gambar kover buku.
 
 
 % TABLE OF CONTENTS
@@ -221,44 +223,76 @@ Many thanks to Anumpama Kinagi for the use of the cover image.
 \mainmatter
 
 
-\chapter{The way of the program}
+% \chapter{The way of the program}
+\chapter{Caranya Memrogram}
 
-The goal of this book is to teach you to think like a
-computer scientist.  This way of thinking combines some of the best features
-of mathematics, engineering, and natural science.  Like mathematicians,
-computer scientists use formal languages to denote ideas (specifically
-computations).  Like engineers, they design things, assembling components
-into systems and evaluating tradeoffs among alternatives.  Like scientists,
-they observe the behavior of complex systems, form hypotheses, and test
-predictions.
+% The goal of this book is to teach you to think like a
+% computer scientist.  This way of thinking combines some of the best features
+% of mathematics, engineering, and natural science.  Like mathematicians,
+% computer scientists use formal languages to denote ideas (specifically
+% computations).  Like engineers, they design things, assembling components
+% into systems and evaluating tradeoffs among alternatives.  Like scientists,
+% they observe the behavior of complex systems, form hypotheses, and test
+% predictions.
+
+Tujuan pada buku ini untuk mengajari anda berpikir seperti ilmuwan komputer. 
+Cara berpikir ini menggabungkan berbagai pendekatan dari 
+matematika, ilmu rekayasa teknik, dan ilmu alam. Layaknya matematikawan, ilmuwan komputer 
+menggunakan bahasa formal untuk menyatakan ide (terutama ide-ide komputasi). Seperti rekayasawan,
+mereka mendesain barang, merakit komponen menjadi sistem dan memeriksa kelebihan kekurangan desain 
+dari berbagai alternatif yang ada. Mirip dengan ilmuwan, mereka mengamati perilaku sistem
+ yang kompleks, membangun hipotesa dan menguji prediksi dari hipotesa.
 
 \index{problem solving}
 
-The single most important skill for a computer scientist is {\bf
-problem solving}.  Problem solving means the ability to formulate
-problems, think creatively about solutions, and express a solution clearly
-and accurately.  As it turns out, the process of learning to program is an
-excellent opportunity to practice problem-solving skills.  That's why
-this chapter is called, ``The way of the program.''
 
-On one level, you will be learning to program, a useful
-skill by itself.  On another level, you will use programming as a means to
-an end.  As we go along, that end will become clearer.
+% The single most important skill for a computer scientist is {\bf
+% problem solving}.  Problem solving means the ability to formulate
+% problems, think creatively about solutions, and express a solution clearly
+% and accurately.  As it turns out, the process of learning to program is an
+% excellent opportunity to practice problem-solving skills.  That's why
+% this chapter is called, ``The way of the program.''
 
-\section{The OCaml programming language}
+Kemampuan tunggal yang paling penting untuk dimiliki oleh ilmuwan komputer adalah 
+kemampuan {\it problem solving} (penyelesaian masalah).
+{\it Problem solving} berarti kemampuan untuk merumuskan masalah, 
+berpikir kreatif menemukan solusi, dan menyatakan solusi dengan jelas dan akurat.
+Ternyata, proses mempelajari membuat program adalah kesempatan yang bagus sekali 
+untuk mengasah kemampuan {\it problem solving}. Ini alasannya mengapa, bagian ini dinamai, \textbf{Caranya memrogram} (membuat program).
+
+% On one level, you will be learning to program, a useful
+% skill by itself.  On another level, you will use programming as a means to
+% an end.  As we go along, that end will become clearer.
+
+Pada tingkat selanjutnya, anda akan belajar cara untuk memprogram, kemampuan yang berguna dengan sendirinya.
+Pada tingkatan lain, anda akan menggunakan pemrogramman sebagai alat mencapai tujuan akhir. 
+Seiring kita menelusuri buku ini lebih dalam, tujuan itu akan menjadi lebih jelas.
+
+\section{Bahasa Pemrgraman OCaml}
 \index{programming language}
 \index{language!programming}
 
-The programming language you will learn is OCaml. OCaml is
-an example of a {\bf high-level language}; other high-level languages
-you might have heard of are C, C++, Perl, Java and Python.
+% The programming language you will learn is OCaml. OCaml is
+% an example of a {\bf high-level language}; other high-level languages
+% you might have heard of are C, C++, Perl, Java and Python.
 
-There are also {\bf low-level languages}, sometimes referred to as ``machine
-languages'' or ``assembly languages.''  Loosely speaking, computers
-can only execute programs written in low-level languages.  So
-programs written in a high-level language have to be processed before
-they can run.  This extra processing takes some time, which is a small
-disadvantage of high-level languages.
+Bahasa pemrograman yang anda akan pelajari yaitu OCaml. OCaml adalah contoh dari
+ {\bf bahasa tingkat tinggi} ({\it high-level language}), bahasa tingkat tinggi lain 
+ yang mungkin pernah anda dengar yaitu C, C++, Perl, Java, dan Python.
+
+% There are also {\bf low-level languages}, sometimes referred to as ``machine
+% languages'' or ``assembly languages.''  Loosely speaking, computers
+% can only execute programs written in low-level languages.  So
+% programs written in a high-level language have to be processed before
+% they can run.  This extra processing takes some time, which is a small
+% disadvantage of high-level languages.
+
+Selain itu juga ada {\bf bahasa tingkat rendah} ({\it low-level language}), terkadang 
+merujuk sebagai ``bahasa mesin'' ({\it machine language}) atau ``bahasa rakitan'' 
+({\it assembly language}). Secara umum, komputer hanya bisa menjalankan program 
+yang ditulis dalam bahasa tingkat rendah. Jadi, program yang ditulis dengan bahasa tingkat 
+tinggi harus diproses sebelum ia dijalankan. Proses tambahan ini sedikit memakan waktu, yang menjadi
+kekurangan kecil dari bahasa tingkat tinggi.
 
 \index{portability}
 \index{high-level language}
@@ -266,17 +300,28 @@ disadvantage of high-level languages.
 \index{language!high-level}
 \index{language!low-level}
 
-The advantages are enormous.  First, it is much easier to program
-in a high-level language.  Programs written in a high-level language
-take less time to write, they are shorter and easier to read, and they
-are more likely to be correct.  Second, high-level languages are {\bf
-portable}, meaning that they can run on different kinds of computers
-with few or no modifications.  Low-level programs can run on only one
-kind of computer and have to be rewritten to run on another.
+% The advantages are enormous.  First, it is much easier to program
+% in a high-level language.  Programs written in a high-level language
+% take less time to write, they are shorter and easier to read, and they
+% are more likely to be correct.  Second, high-level languages are {\bf
+% portable}, meaning that they can run on different kinds of computers
+% with few or no modifications.  Low-level programs can run on only one
+% kind of computer and have to be rewritten to run on another.
 
-Due to these advantages, almost all programs are written in high-level
-languages.  Low-level languages are used only for a few specialized
-applications.
+Banyak keuntungan dari bahasa tingkat tinggi. Pertama, lebih mudah memrogram 
+dalam bahasa tingkat tinggi. Program yang ditulis dengan bahasa tingkat tinggi 
+ memerlukan sedikit waktu untuk menulisnya, mereka memiliki penulisan yang pendek 
+ dan mudah untuk dibaca. Kedua, bahasa tingkat tinggi bersifat {\bf portable}, berarti 
+ mereka bisa berjalan di beragam jenis komputer dengan sedikit atau tanpa modifikasi. 
+ Bahasa tingkat rendah hanya bisa berjalan di satu jenis komputer dan harus ditulis 
+ ulang untuk berjalan di jenis lain.
+
+Karena kelebihan ini, hampir semua program ditulis dengan bahasa tingkat tinggi.
+Bahasa tingkat rendah hanya digunakan untuk beberapa aplikasi khusus.
+
+% Due to these advantages, almost all programs are written in high-level
+% languages.  Low-level languages are used only for a few specialized
+% applications.
 
 \index{compile}
 \index{interpret}

@@ -45,18 +45,15 @@ distrib: book
 	chmod -R o+r $(DEST)/*
 
 book:	book.tex
-	latex book
 	makeindex book
-	latex book
-	dvips -t letter -Ppdf -o thinkocaml.ps book
-#	dvips -T 5.5in,8in -Ppdf -o thinkocaml.ps book
-#	dvips -t b5 -Ppdf -o thinkocaml.ps book
-#	dvips -T 7in,10in -Ppdf -o thinkocaml.ps book
-	gv thinkocaml.ps
+	pdflatex -interaction=nonstopmode book
+# mv book.pdf thinkpython.pdf
+# evince thinkpython.pdf
 
 
 clean:
 	rm -f *~ *.aux *.log *.dvi *.idx *.ilg *.ind *.toc
+	rm -f thinkocaml.*
 
 
 
