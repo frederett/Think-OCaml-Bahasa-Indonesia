@@ -45,6 +45,7 @@ distrib: book
 	chmod -R o+r $(DEST)/*
 
 book:	book.tex
+#	latex book
 	makeindex book
 	pdflatex -interaction=nonstopmode book
 # mv book.pdf thinkpython.pdf

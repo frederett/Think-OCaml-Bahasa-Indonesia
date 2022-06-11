@@ -24,7 +24,8 @@
 \usepackage{pslatex}
 \usepackage{url}
 \usepackage{fancyhdr}
-\usepackage{graphicx}
+% \usepackage{graphicx}
+\usepackage[final]{graphicx}
 \usepackage{amsmath, amsthm, amssymb}
 \usepackage{exercise}                        % texlive-latex-extra
 \usepackage{makeidx}
@@ -32,8 +33,9 @@
 \usepackage{hevea}                           
 \usepackage{upquote}
 
+
 \newcommand{\thetitle}{Think OCaml: Berpikir (Fungsional) Seperti Ilmuwan Komputer}
-\newcommand{\theversion}{0.1.1}
+\newcommand{\theversion}{0.1.1-frederett}
 \renewcommand{\chaptername}{Bab}
 
 \makeindex
@@ -268,7 +270,7 @@ Pada tingkat selanjutnya, anda akan belajar cara untuk memprogram, kemampuan yan
 Pada tingkatan lain, anda akan menggunakan pemrogramman sebagai alat mencapai tujuan akhir. 
 Seiring kita menelusuri buku ini lebih dalam, tujuan itu akan menjadi lebih jelas.
 
-\section{Bahasa Pemrgraman OCaml}
+\section{Bahasa Pemrograman OCaml}
 \index{programming language}
 \index{language!programming}
 
@@ -326,11 +328,18 @@ Bahasa tingkat rendah hanya digunakan untuk beberapa aplikasi khusus.
 \index{compile}
 \index{interpret}
 
-Two kinds of programs process high-level languages
-into low-level languages: {\bf interpreters} and {\bf compilers}.
-An interpreter reads a high-level program and executes it, meaning that it
-does what the program says.  It processes the program a little at a time,
-alternately reading lines and performing computations.
+% Two kinds of programs process high-level languages
+% into low-level languages: {\bf interpreters} and {\bf compilers}.
+% An interpreter reads a high-level program and executes it, meaning that it
+% does what the program says.  It processes the program a little at a time,
+% alternately reading lines and performing computations.
+
+Ada dua jenis program untuk memproses bahasa tingkat tinggi kedalam 
+bahasa tingkat rendah : {\bf interpreter} dan {\bf kompilator}.
+Interpreter membaca program (bahasa) tingkat tinggi dan menjalankanya, artinya 
+melakukan apa yang tertulis didalam program. Ia memproses isi program satu per satu, 
+membaca dan melakukan komputasi setiap baris kode ({\it source code}), proses ini disebut 
+dengan interpretasi.
 
 \beforefig
 \centerline{\includegraphics[height=0.77in]{figs/interpret.eps}}
@@ -340,24 +349,38 @@ alternately reading lines and performing computations.
 \index{object code}
 \index{executable}
 
-A compiler reads the program and translates it completely before the program 
-starts running.  In this context, the high-level program is called the {\bf source 
-code}, and the translated program is called the {\bf object code} or the {\bf executable}.  
-Once a program is compiled, you can execute it repeatedly without further translation.
+% A compiler reads the program and translates it completely before the program 
+% starts running.  In this context, the high-level program is called the {\bf source 
+% code}, and the translated program is called the {\bf object code} or the {\bf executable}.  
+% Once a program is compiled, you can execute it repeatedly without further translation.
+
+Kompilator membaca program dan menerjemahkanya isinya sebelum program mulai dijalankan, 
+proses ini disebut kompilasi. Pada konteks ini, program tingkat tinggi disebut sebagai 
+{\bf kode sumber}, dan program hasil terjemahan disebut {\bf kode objek} ({\it object code}) 
+atau {\it executable}. Setelah program dikompilasi, anda bisa menjalankan program berulang tanpa perlu 
+penerjemaahan lagi.
 
 \beforefig
 \centerline{\includegraphics[height=0.77in]{figs/compile.eps}}
 \afterfig
 
-One of the nice features of OCaml is that OCaml is both a compiled and an interpreted 
-programming language. On the one hand, OCaml can be compiled into an executable file. 
-This makes it easier to pass along your program to non-OCaml users, which for a new, 
-up-and-coming programming language like OCaml, is a nice feature. On the other hand, 
-OCaml can be treated like an interpreted programming language, meaning that an OCaml 
-script or OCaml commands can be executed by an interpreter. This is useful for finding 
-errors in your code and testing commands and snippets of code. There are two ways to use 
-the interpreter: {\bf interactive mode} and {\bf script mode}. In interactive mode, you 
-type OCaml commands into the {\bf toplevel} and the interpreter prints the result:
+% One of the nice features of OCaml is that OCaml is both a compiled and an interpreted 
+% programming language. On the one hand, OCaml can be compiled into an executable file. 
+% This makes it easier to pass along your program to non-OCaml users, which for a new, 
+% up-and-coming programming language like OCaml, is a nice feature. On the other hand, 
+% OCaml can be treated like an interpreted programming language, meaning that an OCaml 
+% script or OCaml commands can be executed by an interpreter. This is useful for finding 
+% errors in your code and testing commands and snippets of code. There are two ways to use 
+% the interpreter: {\bf interactive mode} and {\bf script mode}. In interactive mode, you 
+% type OCaml commands into the {\bf toplevel} and the interpreter prints the result:
+
+Salah satu fitur unik dari OCaml, OCaml adalah bahasa pemrograman dengan pendekatan kompilasi
+sekaligus interpretasi. Di sisi lain, OCaml dapat dikompilasi menjadi berkas {\it executable}.
+Cara ini memudahkan anda untuk memberikan program kepada bukan pengguna OCaml, terutama pengguna baru,
+untuk bahasa yang sedang naik daun seperti OCaml, ini adalah fitur bagus. Selain itu, OCaml bisa 
+berlaku seperti bahasa pemrograman berbasis interpretasi, artinya skrip kode OCaml atau perintah 
+OCaml bisa dijalankan melalui {\it interpreter}. Pendekatan ini membantu dalam pencarian galat ({\it error}) dalam kode anda atau membantu anda untuk menguji perintah bahasa dan potongan baris kode. Terdapat dua cara untuk menggunakan {\it interpreter} : mode interaktif dan mode skrip. Dalam mode interaktif, anda menuliskan perintah bahasa dalam {\bf toplevel} dan {\it interpreter} akan memunculkan hasil seperti ini:
+
 
 \index{interactive mode}
 \index{script mode}
@@ -369,23 +392,30 @@ type OCaml commands into the {\bf toplevel} and the interpreter prints the resul
 \end{verbatim}
 \afterverb
 %
-The octothorp, {\tt \#}, is the {\bf prompt} the interpreter uses to indicate that it is 
-ready. The double semi-colons indicates the end of a line. If you type {\tt 1 + 1;;}, the 
-interpreter replies {\tt - : int = 2}.
+
+% The octothorp, {\tt \#}, is the {\bf prompt} the interpreter uses to indicate that it is 
+% ready. The double semi-colons indicates the end of a line. If you type {\tt 1 + 1;;}, the 
+% interpreter replies {\tt - : int = 2}.
+
+Tanda nomor ({\it octothorp}), {\tt \#}, adalah masukan perintah yang menandakan {\it interpreter} siap menerima kode. Dua titik koma menandakan akhir baris. Jika anda ketik {\tt 1 + 1;;} kemudian tekan tombol {\bf enter}, {\it interpreter} akan membalas {\tt - : int = 2}.
 
 \index{prompt}
 
-Alternatively, you can store code in a file and use the interpreter to execute the contents 
-of the file, which is called a {\bf script}.  By convention, OCaml scripts have names that 
-end with {\tt .ml}.
+% Alternatively, you can store code in a file and use the interpreter to execute the contents 
+% of the file, which is called a {\bf script}.  By convention, OCaml scripts have names that 
+% end with {\tt .ml}.
+
+Cara lainya, anda bisa menyimpan kode ke dalam sebuah berkas dan menggunakan {\it interpreter} untuk menjalankan isi berkas, yang disebut sebagai {\bf skrip}. Berdasarkan aturan, skrip OCaml memiliki nama dengan ekstensi akhiran {\tt .ml}.
 
 \index{script}
 
 \index{testing!interactive mode}
 
-Working in interactive mode is convenient for testing small pieces of code because you can type 
-and execute them immediately.  But for anything more than a few lines, you should save your code 
-as a script so you can modify and execute it in the future.
+% Working in interactive mode is convenient for testing small pieces of code because you can type 
+% and execute them immediately.  But for anything more than a few lines, you should save your code 
+% as a script so you can modify and execute it in the future.
+
+Berkerja dalam mode interaktif cukup nyaman untuk menguji beberapa baris kode karena anda bisa mengetik dan langsung mendapatkan hasilnya. Tetapi untuk kode dengan baris yang tidak sedikit, anda bisa menyimpan kode sebagai skrip agar anda bisa mengubah dan menjalankanya di lain waktu.
 
 \section{The OCaml Toplevel}
 
