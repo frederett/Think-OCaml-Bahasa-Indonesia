@@ -417,34 +417,68 @@ Cara lainya, anda bisa menyimpan kode ke dalam sebuah berkas dan menggunakan {\i
 
 Berkerja dalam mode interaktif cukup nyaman untuk menguji beberapa baris kode karena anda bisa mengetik dan langsung mendapatkan hasilnya. Tetapi untuk kode dengan baris yang tidak sedikit, anda bisa menyimpan kode sebagai skrip agar anda bisa mengubah dan menjalankanya di lain waktu.
 
-\section{The OCaml Toplevel}
+\section{Toplevel OCaml}
 
-Let's take a moment to explain how to use the OCaml toplevel. The toplevel 
-works a little differently depending on your operating system. I will cover 
-using the toplevel in Windows (7) and Ubuntu (10.04 Karmic). \footnote{Mac users are on their own.}
+% Let's take a moment to explain how to use the OCaml toplevel. The toplevel 
+% works a little differently depending on your operating system. I will cover 
+% using the toplevel in Windows (7) and Ubuntu (10.04 Karmic). \footnote{Mac users are on their own.}
 
-One thing you will need to use are OCaml commands known as {\bf directives}. 
-Directives tell the interpreter or compiler to do specific tasks, like load 
-code from a file or exit. A list of some directives  can be found at 
-\url{http://caml.inria.fr/pub/docs/manual-ocaml/manual023.html}. One particularly
-useful directive is {\tt \verb"#quit;;"}, which does exactly what it sounds like.
+Mari luangkan waktu untuk mengerti cara mengunakan {\it toplevel}, 
+mekanisme {\it Read-Eval-Print-Loop} \footnote{\textit{Read-Eval-Print-Loop} 
+adalah istilah untuk menjalankan kode perintah sekaligus menampilkan hasilnya } di OCaml.
+{\it Toplevel} memiliki perbedaan sedikit saat berkerja yang bergantung pada sistem 
+operasi anda. Saya akan membahasnya mengunakan {\it toplevel} dalam Windows (7) 
+dan Distribusi GNU/Linux  \footnote{Pengguna Mac mengikuti cara distribusi GNU/Linux.}
+
+
+% One thing you will need to use are OCaml commands known as {\bf directives}. 
+% Directives tell the interpreter or compiler to do specific tasks, like load 
+% code from a file or exit. A list of some directives  can be found at 
+% \url{http://caml.inria.fr/pub/docs/manual-ocaml/manual023.html}. One particularly
+% useful directive is {\tt \verb"#quit;;"}, which does exactly what it sounds like.
+
+Satu hal perlu anda gunakan adalah perintah OCaml yang dikenal sebagai {\it directives}.
+{\it Directives} memberitahu interpreter atau kompilator untuk melakukan tugas khusus, seperti 
+memuat kode dari berkas atau keluar dari program. Daftar kumpulan {\it directives} bisa 
+dilihat melalui \url{http://caml.inria.fr/pub/docs/manual-ocaml/manual023.html}. Satu contoh {\it directives}
+ yang berguna yaitu {\tt \verb"#quit;;"}, yang tujuan sesuai dengan namanya (keluar dari program).
 
 \index{Directive}
 \index{Toplevel}
 
-\subsection{Ubuntu (10.04)}
+\subsection{Distribusi GNU/Linux}
 
-First off, you must install the ocaml package and its dependencies. Open the terminal and type:
+% First off, you must install the ocaml package and its dependencies. Open the terminal and type:
+
+Pertama, anda perlu memasang {\bf OPAM} ({\it OCaml Package Manager}). Buka terminal dan ketik:
 
 \beforeverb
 \begin{verbatim}
- sudo apt-get install ocaml
+  sh <(curl -sL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)
 \end{verbatim}
 \afterverb
-It will then likely ask you for your admin password. After the installation is complete, you can 
-open the OCaml toplevel simply by typing {\tt ocaml} at the command line.
 
-Once in the toplevel, you can open a script by using the {\tt \#use "{\it filename}";;} directive:
+Kedua, anda menyiapkan {\bf OPAM} dan memasang kompilator. Buka terminal dan ketik
+(bila ada opsi {\tt opam to modify \~/.bashrc ?}, ketik y lalu tekan enter) :
+
+\beforeverb
+\begin{verbatim}
+  $ opam init
+  $ opam switch create 4.14.0
+\end{verbatim}
+\afterverb
+
+% It will then likely ask you for your admin password. After the installation is complete, you can 
+% open the OCaml toplevel simply by typing {\tt ocaml} at the command line.
+
+Tanda dollar {\tt \$} menandakan barisan perintah, tidak perlu ditulis. 
+Perintah {\tt opam init} menyiapkan terminal pengguna untuk keperluan {\bt OPAM}. 
+Perintah {\tt opam switch create 4.14.0} memasang kompilator, versi kompilator pada contoh ini 4.14.0. 
+Daftar versi kompilator yang tersedia bisa dilihat dengan perintah {\tt opam switch list-available}.
+Setelah pemasangan selesai, anda bisa membuka {\it toplevel} dengan mengetik {\tt ocaml} pada terminal.
+Ketika didalam {\it toplevel}, anda bisa membuka script menggunakan {\it directives} {\tt \#use "{\it namafile}";;} :
+
+% Once in the toplevel, you can open a script by using the {\tt \#use "{\it filename}";;} directive:
 
 \beforeverb
 \begin{verbatim}
@@ -452,10 +486,13 @@ Once in the toplevel, you can open a script by using the {\tt \#use "{\it filena
 \end{verbatim}
 \afterverb
 
-Note that the toplevel's {\bf current directory} \footnote{The {\bf current directory} is the 
-directory in which ocaml will look to find files to run, outside of the standard ocaml directories.} 
-will be the current directory when you ran it within the terminal. You can change your current directory 
-using the {\tt \#cd ``{\it dirname}'';;} directive.
+% Note that the toplevel's {\bf current directory} \footnote{The {\bf current directory} is the 
+% directory in which ocaml will look to find files to run, outside of the standard ocaml directories.} 
+% will be the current directory when you ran it within the terminal. You can change your current directory 
+% using the {\tt \#cd ``{\it dirname}'';;} directive.
+
+Perhatikan bahwa lokasi folder saat ini ({\it current directory} \footnote{{\bf current directory} adalah lokasi folder untuk OCaml mencari berkas yang akan dijalankan, diluar perfolderan standar OCaml}) ketika membuka {\it toplevel} akan berada di lokasi folder yang sama pada terimnal anda saat ini.
+Anda bisa mengubah lokasi folder dengan {\it directive} {\tt \#cd ``{\it namafolder}'';;}.
 
 \subsection{Windows (7)}
 
@@ -482,40 +519,61 @@ directory in which ocaml will look to find files to run, outside of the standard
 will be the current directory when you ran it within the terminal. You can change your current directory 
 using the {\tt \#cd "{\it dirname}";;} directive.
 
-\section{What is a program?}
+% \section{What is a program?}
+\section{Apa itu Program ?}
 
-A {\bf program} is a sequence of instructions that specifies how to perform a computation.  The computation 
-might be something mathematical, such as solving a system of equations or finding the roots of a polynomial, 
-but it can also be a symbolic computation, such as searching and replacing text in a document or (strangely 
-enough) compiling a program.
+% A {\bf program} is a sequence of instructions that specifies how to perform a computation.  The computation 
+% might be something mathematical, such as solving a system of equations or finding the roots of a polynomial, 
+% but it can also be a symbolic computation, such as searching and replacing text in a document or (strangely 
+% enough) compiling a program.
+
+{\bf Program} adalah rangkaian instruksi yang menjelaskan cara melakukan sebuah komputasi. Komputasi 
+merupakan hal matematis, seperti menyelesaikan sistem persamaan atau mencari akar polinomial, tetapi itu juga bisa berarti komputasi simbolik, seperti mencari dan mengganti teks dari dokumen atau mengompilasi sebuah program.
 
 \index{program}
 
-The details look different in different languages, but a few basic instructions appear in just about every 
-language:
+% The details look different in different languages, but a few basic instructions appear in just about every 
+% language:
+
+Detailnya terlihat berbeda dalam bahasa yang berbeda, tetapi beberapa instruksi dasar muncul di hampir setiap bahasa
 
 \begin{description}
 
-\item[input:] Get data from the keyboard, a file, or some other device.
+% \item[input:] Get data from the keyboard, a file, or some other device.
 
-\item[output:] Display data on the screen or send data to a file or other device.
+\item[input:] Mengambil data dari {\it keyboard}, berkas, atau perangkat lain.
 
-\item[math:] Perform basic mathematical operations like addition and multiplication.
+% \item[output:] Display data on the screen or send data to a file or other device.
 
-\item[conditional execution:] Check for certain conditions and execute the appropriate sequence of statements.
+\item[output:] Menampilkan data ke layar atau mengirim data kedalam berkas atau perangkat lain.
 
-\item[repetition:] Perform some action repeatedly, usually with some variation.
+
+% \item[math:] Perform basic mathematical operations like addition and multiplication.
+
+\item[math:] Melakukan operasi matematika dasar seperti penjumlahan dan perkalian.
+
+% \item[conditional execution:] Check for certain conditions and execute the appropriate sequence of statements.
+
+\item[conditional execution:] Memeriksa kondisi tertentu dan menjalankan alur pernyataan sesuai kondisi.
+
+% \item[repetition:] Perform some action repeatedly, usually with some variation.
+
+\item[repetition:] Melakukan aksi pernyataan berulang, biasanya dengan beberapa variasi kondisi.
 
 \end{description}
 
-Believe it or not, that's pretty much all there is to it.  Every program you've ever used, no matter how 
-complicated, is made up of instructions that look pretty much like these.  So you can think of programming 
-as the process of breaking a large, complex task into smaller and smaller subtasks until the subtasks are 
-simple enough to be performed with one of these basic instructions.
+% Believe it or not, that's pretty much all there is to it.  Every program you've ever used, no matter how 
+% complicated, is made up of instructions that look pretty much like these.  So you can think of programming 
+% as the process of breaking a large, complex task into smaller and smaller subtasks until the subtasks are 
+% simple enough to be performed with one of these basic instructions.
+
+Percaya atau tidak, itu sudah semuanya. Setiap program yang anda pernah gunakan, tidak perduli betapa rumitnya, tersusun dari kumpulan instruksi seperti ini. Sehingga anda dapat melihat pemrograman sebagai proses memecah perkerjaan besar dan rumit menjadi kumpulan perkerjaan yang lebih kecil sampai cukup sederhana untuk dilakukan oleh salah satu instruksi dasar diatas.
 
 \index{algorithm}
 
-That may be a little vague, but we will come back to this topic when we talk about {\bf algorithms}.
+% That may be a little vague, but we will come back to this topic when we talk about {\bf algorithms}.
+
+Mungkin kurang terbayang, tidak apa kita akan kembali ke topik ini ketika kita membahas tentang {\bf algoritme}.
 
 \section{What is debugging?}
 \index{debugging}
