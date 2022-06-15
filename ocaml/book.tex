@@ -255,7 +255,7 @@ dari berbagai alternatif yang ada. Mirip dengan ilmuwan, mereka mengamati perila
 % excellent opportunity to practice problem-solving skills.  That's why
 % this chapter is called, ``The way of the program.''
 
-Kemampuan tunggal yang paling penting untuk dimiliki oleh ilmuwan komputer adalah 
+Kemampuan tunggal yang paling penting untuk dimiliki ilmuwan komputer adalah 
 kemampuan {\it problem solving} (penyelesaian masalah).
 {\it Problem solving} berarti kemampuan untuk merumuskan masalah, 
 berpikir kreatif menemukan solusi, dan menyatakan solusi dengan jelas dan akurat.
@@ -354,7 +354,7 @@ dengan interpretasi.
 % code}, and the translated program is called the {\bf object code} or the {\bf executable}.  
 % Once a program is compiled, you can execute it repeatedly without further translation.
 
-Kompilator membaca program dan menerjemahkanya isinya sebelum program mulai dijalankan, 
+Kompilator membaca program dan menerjemahkan isinya sebelum program mulai dijalankan, 
 proses ini disebut kompilasi. Pada konteks ini, program tingkat tinggi disebut sebagai 
 {\bf kode sumber}, dan program hasil terjemahan disebut {\bf kode objek} ({\it object code}) 
 atau {\it executable}. Setelah program dikompilasi, anda bisa menjalankan program berulang tanpa perlu 
@@ -415,7 +415,9 @@ Cara lainya, anda bisa menyimpan kode ke dalam sebuah berkas dan menggunakan {\i
 % and execute them immediately.  But for anything more than a few lines, you should save your code 
 % as a script so you can modify and execute it in the future.
 
-Berkerja dalam mode interaktif cukup nyaman untuk menguji beberapa baris kode karena anda bisa mengetik dan langsung mendapatkan hasilnya. Tetapi untuk kode dengan baris yang tidak sedikit, anda bisa menyimpan kode sebagai skrip agar anda bisa mengubah dan menjalankanya di lain waktu.
+Berkerja dalam mode interaktif cukup nyaman untuk menguji beberapa baris kode karena anda bisa mengetik 
+dan langsung mendapatkan hasilnya. Tetapi untuk kode dengan baris yang tidak sedikit, anda bisa menyimpan kode 
+sebagai skrip agar anda bisa mengubah dan menjalankanya di lain waktu.
 
 \section{Toplevel OCaml}
 
@@ -575,41 +577,60 @@ Percaya atau tidak, itu sudah semuanya. Setiap program yang anda pernah gunakan,
 
 Mungkin kurang terbayang, tidak apa kita akan kembali ke topik ini ketika kita membahas tentang {\bf algoritme}.
 
-\section{What is debugging?}
+\section{Apa itu Awakutu?}
 \index{debugging}
 \index{bug}
 
-Programming is error-prone.  For whimsical reasons, programming errors are called {\bf bugs}\footnote{It's 
-not actually true that it's named after a moth found in a computer relay, though that does make for a rather 
-amusing story. For more information on etymology, check out \url{http://en.wikipedia.org/wiki/Software_bug}.} 
-and the process of tracking them down is called {\bf debugging}.
+% Programming is error-prone.  For whimsical reasons, programming errors are called {\bf bugs}\footnote{It's 
+% not actually true that it's named after a moth found in a computer relay, though that does make for a rather 
+% amusing story. For more information on etymology, check out \url{http://en.wikipedia.org/wiki/Software_bug}.} 
+% and the process of tracking them down is called {\bf debugging}.
+
+Pemrograman rawan dengan kesalahan. Kesalahan dalam permograman disebut dengan {\bf bugs} (kutu, dalam bahas indonesia) 
+\footnote{Sebenarnya tidak benar bahwa itu dinamai ngengat yang ditemukan di relay komputer, meskipun itu membuat 
+cerita yang agak lucu. Untuk informasi lebih lanjut tentang etimologi, lihat \url{http://en.wikipedia.org/wiki/Software_bug}.} 
+dan cara untuk melacak {\bf bug} disebut dengan awakutu (meskipun lebih populer dengan nama {\it debugging}).
 
 \index{debugging}
 \index{bug}
 
-Three kinds of errors can occur in a program: syntax errors, runtime errors, and semantic errors. It is useful 
-to distinguish between them in order to track them down more quickly.
+% Three kinds of errors can occur in a program: syntax errors, runtime errors, and semantic errors. It is useful 
+% to distinguish between them in order to track them down more quickly.
 
-\subsection{Syntax errors}
+Ada tiga jenis kesalahan atau galat yang bisa terjadi pada program : kesalahan tata tulis ({\it syntax error}), 
+galat \footnote{ kata galat adalah sinonim dari kesalahan} waktu proses ({\it runtime error}) dan kesalahan makna ({\it semantic error}). Cukup penting 
+untuk membeda antara kesalahan program karena membantu kita untuk melacaknya sedini mungkin.
+
+\subsection{Kesalahan Tata Tulis}
 \index{syntax error}
 \index{error!syntax}
 \index{error message}
 
-OCaml can only execute a program if the syntax is correct; otherwise, the interpreter displays an error message.  
-{\bf Syntax} refers to the structure of a program and the rules about that structure. For example, parentheses 
-have to come in matching pairs, so {\tt (1 + 2)} is legal, but {\tt 8)} is a {\bf syntax error}.
+% OCaml can only execute a program if the syntax is correct; otherwise, the interpreter displays an error message.  
+% {\bf Syntax} refers to the structure of a program and the rules about that structure. For example, parentheses 
+% have to come in matching pairs, so {\tt (1 + 2)} is legal, but {\tt 8)} is a {\bf syntax error}.
+
+OCaml hanya akan menjalakan program bila tata tulisnya benar; sebaliknya, {\it interpreter} akan menampilkan pesan galat.
+{\bf Tata tulis} ({\it Syntax}) merujuk ke struktur dari program dan aturan pada struktur program. Sebagai contoh, tanda kurung
+harus berpasangan, jadi {\tt (1 + 2)} terbilang legal (sesuai peraturan), tetapi {\tt 8)} adalah kesalahan tata
+ tulis (sebab tanda kurungnya tidak berpasangan).
 
 \index{parentheses!matching}
 \index{syntax}
 \index{cummings, e. e.}
 
-In English readers can tolerate most syntax errors, which is why we can read the poetry of e. e. cummings without 
-spewing error messages. OCaml is not so forgiving.  If there is a single syntax error anywhere in your program, 
-OCaml will display an error message and quit, and you will not be able to run your program. During the first few 
-weeks of your programming career, you will probably spend a lot of time tracking down syntax errors.  As you gain 
-experience, you will make fewer errors and find them faster.
+% In English readers can tolerate most syntax errors, which is why we can read the poetry of e. e. cummings without 
+% spewing error messages. OCaml is not so forgiving.  If there is a single syntax error anywhere in your program, 
+% OCaml will display an error message and quit, and you will not be able to run your program. During the first few 
+% weeks of your programming career, you will probably spend a lot of time tracking down syntax errors.  As you gain 
+% experience, you will make fewer errors and find them faster.
 
-\subsection{Runtime errors}
+Sebagai pembaca, kita bisa mentolerir kesalahan dalam tata tulis., seperti kenapa membaca tulisan dengan tipo tanpa 
+memberikan pesan kesalahan. OCaml tidak begitu toleran. Jika ada satu kesalahan tata tulis didalam program anda, OCaml akan 
+menampilkan pesan kesalahan dan program berhenti. Saat pekan pertama dalam karir pemrograman, anda akan banyak menghabiskan waktu 
+untuk melacak kesalahan tata tuils. Seiring anda mendapatkan pengalaman, anda akan sedikit membuat kesalahan dan cepat dalam melacaknya.
+
+\subsection{Galat Waktu Proses}
 \label{runtime}
 \index{runtime error}
 \index{error!runtime}
@@ -617,59 +638,99 @@ experience, you will make fewer errors and find them faster.
 \index{safe language}
 \index{language!safe}
 
-The second type of error is a runtime error, so called because the error does not appear until after the 
-program has started running. These errors are also called {\bf exceptions} because they usually indicate 
-that something exceptional (and bad) has happened.
+% The second type of error is a runtime error, so called because the error does not appear until after the 
+% program has started running. These errors are also called {\bf exceptions} because they usually indicate 
+% that something exceptional (and bad) has happened.
 
-Runtime errors are rare in the simple programs you will see in the first few chapters, so it might be a 
-while before you encounter one.
+Jenis kesalahan program kedua yaitu galat waktu proses, sesuai namanya kesalahan ini hanya muncul setelah 
+program dijalankan. Kesalahan ini juga disebut {\bf exceptions} (pengecualian) karena ia menunjukan sesuatu
+yang luar biasa (dan buruk) telah terjadi.
 
-\subsection{Semantic errors}
+% Runtime errors are rare in the simple programs you will see in the first few chapters, so it might be a 
+% while before you encounter one.
+
+Galat waktu proses sukar terjadi pada program sederhana yang akan anda temui di beberapa bab awal buku ini.
+
+\subsection{Kesalahan Makna}
 \index{semantics}
 \index{semantic error}
 \index{error!semantic}
 \index{error message}
 
-The third type of error is the {\bf semantic error}.  If there is a semantic error in your program, it will 
-run successfully in the sense that the computer will not generate any error messages, but it will not do the 
-right thing.  It will do something else.  Specifically, it will do what you told it to do.
+% The third type of error is the {\bf semantic error}.  If there is a semantic error in your program, it will 
+% run successfully in the sense that the computer will not generate any error messages, but it will not do the 
+% right thing.  It will do something else.  Specifically, it will do what you told it to do.
 
-The problem is that the program you wrote is not the program you wanted to write.  The meaning of the program 
-(its semantics) is wrong. Identifying semantic errors can be tricky because it generally requires you to work 
-backward by looking at the output of the program and trying to figure out what it is doing.
+Jenis kesalahan ketiga yaitu Kesalahan Makna, sering juga disebut kesalahan logika. 
+Jika program anda memiliki kesalahan makna, ia tetap berhasil berjalan seperti biasa dan tidak 
+memunculkan pesan error, tetapi program tidak berkerja dengan benar. Ia melakukan hal lain.
+Tentunya, ia harus berjalan sesuai dengan apa yang anda perintahkan.
 
-\subsection{Experimental debugging}
+% The problem is that the program you wrote is not the program you wanted to write.  The meaning of the program 
+% (its semantics) is wrong. Identifying semantic errors can be tricky because it generally requires you to work 
+% backward by looking at the output of the program and trying to figure out what it is doing.
 
-One of the most important skills you will acquire is debugging. Although it can be frustrating, debugging is one 
-of the most intellectually rich, challenging, and interesting parts of programming.
+Masalahnya adalah program yang anda tulis bukanlah program yang anda harapkan kerjanya. Ini berarti maksud 
+yang tertulis di program salah. Mengenali kesalahan makna bisa terbilang cukup mengecoh karena kita perlu 
+melacak mundur alur kerja program dengan melihat {\it output} dari program dan mencoba mencari tahu apa yang 
+dilakukan program.
+
+\subsection{Awakutu Experimental}
+
+% One of the most important skills you will acquire is debugging. Although it can be frustrating, debugging is one 
+% of the most intellectually rich, challenging, and interesting parts of programming.
+
+Salah satu kemampuan penting yang akan anda dapat yaitu awakutu. Memang itu bisa membuat frustasi, awaktu adalah 
+bagian yang paling kaya secara intelektual, menantang, dan menarik dari programing.
 
 \index{experimental debugging}
 \index{debugging!experimental}
 
-In some ways, debugging is like detective work.  You are confronted with clues, and you have to infer the processes 
-and events that led to the results you see.
+% In some ways, debugging is like detective work.  You are confronted with clues, and you have to infer the processes 
+% and events that led to the results you see.
 
-Debugging is also like an experimental science.  Once you have an idea about what is going wrong, you modify your 
-program and try again.  If your hypothesis was correct, then you can predict the result of the modification, and 
-you take a step closer to a working program.  If your hypothesis was wrong, you have to come up with a new one.  
-As Sherlock Holmes pointed out, ``When you have eliminated the impossible, whatever remains, however improbable, 
-must be the truth.'' (A. Conan Doyle, {\em The Sign of Four})
+Di satu sisi, awakutu seperti perkerjaan detektif. Anda berhadapan dengan petunjuk dan anda juga menyimpulan proses dan kejadian
+yang membawa ke hasil yang anda lihat.
+
+% Debugging is also like an experimental science.  Once you have an idea about what is going wrong, you modify your 
+% program and try again.  If your hypothesis was correct, then you can predict the result of the modification, and 
+% you take a step closer to a working program.  If your hypothesis was wrong, you have to come up with a new one.  
+% As Sherlock Holmes pointed out, ``When you have eliminated the impossible, whatever remains, however improbable, 
+% must be the truth.'' (A. Conan Doyle, {\em The Sign of Four})
+
+Awakutu juga nampak seperti ilmu eksperimen. Setiap anda memiliki ide tentang ada suatu yang salah, anda akan memodifikasi program 
+dan mencobanya (mengawakutunya) lagi. Jika hipotesis\footnote{hipotesis adalah pendapat dari perkiraan bagaimana sesuatu berkerja}
+anda benar, maka anda bisa memprediksi hasil dari modifikasi yang anda buat dan membimbing anda selangkah mendekat dengan program 
+yang berkerja. Jika hipotesis anda salah, anda harus membuat hipotesis baru. Seperti yang Sherlock Holmes tunjukan, ``Ketika anda 
+berhasil menghilangkan kemustahilan, apa yang tersisa, betapa tidak mungkinnya, pastilah kebenaran'' (A. Conan Doyle, {\em The Sign of Four})
+
 
 \index{Holmes, Sherlock}
 \index{Doyle, Arthur Conan}
 
-For some people, programming and debugging are the same thing.  That is, programming is the process of gradually 
-debugging a program until it does what you want.  The idea is that you should start with a program that does {\em 
-something} and make small modifications, debugging them as you go, so that you always have a working program.
+% For some people, programming and debugging are the same thing.  That is, programming is the process of gradually 
+% debugging a program until it does what you want.  The idea is that you should start with a program that does {\em 
+% something} and make small modifications, debugging them as you go, so that you always have a working program.
 
-For example, Linux is an operating system that contains thousands of lines of code, but it started out as a simple 
-program Linus Torvalds used to explore the Intel 80386 chip.  According to Larry Greenfield, ``One of Linus's 
-earlier projects was a program that would switch between printing AAAA and BBBB.  This later evolved to Linux.'' 
-({\em The Linux Users' Guide} Beta Version 1).
+Bagi sebagian orang, programan dan awakutu dianggap sama. Oleh karenanya, pemrogramman adalah proses bertahap mengawakutu 
+sebuah program sampai ia melakukan yang anda inginkan. Maksudnya, Anda patut memulai dengan program yang melakukan sesuatu 
+dan membuat modifikasi kecil,sembari mengawakutunya, dengan begitu anda akan memiliki program yang berkerja sesuai harapan.
+
+% For example, Linux is an operating system that contains thousands of lines of code, but it started out as a simple 
+% program Linus Torvalds used to explore the Intel 80386 chip.  According to Larry Greenfield, ``One of Linus's 
+% earlier projects was a program that would switch between printing AAAA and BBBB.  This later evolved to Linux.'' 
+% ({\em The Linux Users' Guide} Beta Version 1).
+
+Sebagai contoh, Linux adalah inti sistem operasi yang berisi ribuan baris kode, tetapi hal tersebut dimulai dengan sesuatu 
+yang sederhana yang digunakan Linus Torvalds \footnote{Linux Torvalds adalah penemu kernel Linux} untuk mengenal chip Intel 80386.
+Dilansir oleh Larry Greenfield, ``Satu dari proyek awal Linus adalah program untuk yang akan beralih mencetak AAAA dan BBBB.
+ Kemudian ia berevolusi menjadi Linux.'' ({\em The Linux Users' Guide} Beta Version 1)
 
 \index{Linux}
 
-Later chapters will make more suggestions about debugging and other programming practices.
+% Later chapters will make more suggestions about debugging and other programming practices.
+
+Bab selanjutnya akan memuat saran tentang awakutu dan praktik-praktik pemrograman lainnya.
 
 \section{Formal and natural languages}
 \index{formal language}
