@@ -1,5 +1,7 @@
 ## Think OCaml: Berpikir (Fungsional) Layaknya Ilmuan Komputer
 
+![cover buku](ocaml/think_ocaml_cover_translated_version.png)
+
 Buku ini karya dari Allen Downey dan Nicholas Monje yang diterbitkan melalui [Green Tea Press](https://greenteapress.com/thinkocaml). Kode sumber buku ini berlisensi GNU GPL versi 3 dan Isi didalamnya berlisensi Creative Commons 3.0 BY-SA.
 
 ### Motivasi menerjemahkan

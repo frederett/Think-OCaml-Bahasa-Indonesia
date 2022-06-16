@@ -474,8 +474,8 @@ Kedua, anda menyiapkan {\bf OPAM} dan memasang kompilator. Buka terminal dan ket
 % open the OCaml toplevel simply by typing {\tt ocaml} at the command line.
 
 Tanda dollar {\tt \$} menandakan barisan perintah, tidak perlu ditulis. 
-Perintah {\tt opam init} menyiapkan terminal pengguna untuk keperluan {\bt OPAM}. 
-Perintah {\tt opam switch create 4.14.0} memasang kompilator, versi kompilator pada contoh ini 4.14.0. 
+Perintah {\tt opam init} untuk menyiapkan terminal pengguna untuk keperluan {\bt OPAM}. 
+Perintah {\tt opam switch create 4.14.0} untuk memasang kompilator, versi kompilator pada contoh ini 4.14.0. 
 Daftar versi kompilator yang tersedia bisa dilihat dengan perintah {\tt opam switch list-available}.
 Setelah pemasangan selesai, anda bisa membuka {\it toplevel} dengan mengetik {\tt ocaml} pada terminal.
 Ketika didalam {\it toplevel}, anda bisa membuka script menggunakan {\it directives} {\tt \#use "{\it namafile}";;} :
@@ -493,8 +493,10 @@ Ketika didalam {\it toplevel}, anda bisa membuka script menggunakan {\it directi
 % will be the current directory when you ran it within the terminal. You can change your current directory 
 % using the {\tt \#cd ``{\it dirname}'';;} directive.
 
-Perhatikan bahwa lokasi folder saat ini ({\it current directory} \footnote{{\bf current directory} adalah lokasi folder untuk OCaml mencari berkas yang akan dijalankan, diluar perfolderan standar OCaml}) ketika membuka {\it toplevel} akan berada di lokasi folder yang sama pada terimnal anda saat ini.
-Anda bisa mengubah lokasi folder dengan {\it directive} {\tt \#cd ``{\it namafolder}'';;}.
+Perhatikan bahwa lokasi folder saat ini ({\it current directory} \footnote{{\bf current directory} adalah lokasi 
+folder untuk OCaml mencari berkas yang akan dijalankan, diluar perfolderan standar OCaml}) ketika membuka {\it toplevel} 
+akan berada di lokasi folder yang sama pada terimnal anda saat ini. Anda bisa mengubah lokasi folder dengan {\it directive} 
+{\tt \#cd ``{\it namafolder}'';;}.
 
 \subsection{Windows (7)}
 
@@ -569,7 +571,9 @@ Detailnya terlihat berbeda dalam bahasa yang berbeda, tetapi beberapa instruksi 
 % as the process of breaking a large, complex task into smaller and smaller subtasks until the subtasks are 
 % simple enough to be performed with one of these basic instructions.
 
-Percaya atau tidak, itu sudah semuanya. Setiap program yang anda pernah gunakan, tidak perduli betapa rumitnya, tersusun dari kumpulan instruksi seperti ini. Sehingga anda dapat melihat pemrograman sebagai proses memecah perkerjaan besar dan rumit menjadi kumpulan perkerjaan yang lebih kecil sampai cukup sederhana untuk dilakukan oleh salah satu instruksi dasar diatas.
+Percaya atau tidak, itu sudah semuanya. Setiap program yang anda pernah gunakan, tidak perduli betapa rumitnya, 
+tersusun dari kumpulan instruksi seperti ini. Sehingga anda dapat melihat pemrograman sebagai proses memecah perkerjaan besar dan 
+rumit menjadi kumpulan perkerjaan yang lebih kecil sampai cukup sederhana untuk dilakukan oleh salah satu instruksi dasar diatas.
 
 \index{algorithm}
 
@@ -625,7 +629,7 @@ harus berpasangan, jadi {\tt (1 + 2)} terbilang legal (sesuai peraturan), tetapi
 % weeks of your programming career, you will probably spend a lot of time tracking down syntax errors.  As you gain 
 % experience, you will make fewer errors and find them faster.
 
-Sebagai pembaca, kita bisa mentolerir kesalahan dalam tata tulis., seperti kenapa membaca tulisan dengan tipo tanpa 
+Sebagai pembaca, kita bisa mentolerir kesalahan dalam tata tulis, seperti kenapa membaca tulisan dengan tipo tanpa 
 memberikan pesan kesalahan. OCaml tidak begitu toleran. Jika ada satu kesalahan tata tulis didalam program anda, OCaml akan 
 menampilkan pesan kesalahan dan program berhenti. Saat pekan pertama dalam karir pemrograman, anda akan banyak menghabiskan waktu 
 untuk melacak kesalahan tata tuils. Seiring anda mendapatkan pengalaman, anda akan sedikit membuat kesalahan dan cepat dalam melacaknya.
@@ -712,7 +716,7 @@ berhasil menghilangkan kemustahilan, apa yang tersisa, betapa tidak mungkinnya, 
 % debugging a program until it does what you want.  The idea is that you should start with a program that does {\em 
 % something} and make small modifications, debugging them as you go, so that you always have a working program.
 
-Bagi sebagian orang, programan dan awakutu dianggap sama. Oleh karenanya, pemrogramman adalah proses bertahap mengawakutu 
+Bagi sebagian orang, pemrograman dan awakutu dianggap sama. Oleh karenanya, pemrogramman adalah proses bertahap mengawakutu 
 sebuah program sampai ia melakukan yang anda inginkan. Maksudnya, Anda patut memulai dengan program yang melakukan sesuatu 
 dan membuat modifikasi kecil,sembari mengawakutunya, dengan begitu anda akan memiliki program yang berkerja sesuai harapan.
 
@@ -732,32 +736,54 @@ Dilansir oleh Larry Greenfield, ``Satu dari proyek awal Linus adalah program unt
 
 Bab selanjutnya akan memuat saran tentang awakutu dan praktik-praktik pemrograman lainnya.
 
-\section{Formal and natural languages}
+\section{Bahasa Alami dan Formal}
 \index{formal language}
 \index{natural language}
 \index{language!formal}
 \index{language!natural}
 
-{\bf Natural languages} are the languages people speak, such as English, Spanish, and French.  They were not 
-designed by people (although people try to impose some order on them); they evolved naturally.
+% {\bf Natural languages} are the languages people speak, such as English, Spanish, and French.  They were not 
+% designed by people (although people try to impose some order on them); they evolved naturally.
 
-{\bf Formal languages} are languages that are designed by people for specific applications.  For example, the 
-notation that mathematicians use is a formal language that is particularly good at denoting relationships 
-among numbers and symbols.  Chemists use a formal language to represent the chemical structure of molecules.  
-And most importantly:
+{\bf Bahasa Alami} adalah bahasa yang digunakan manusia (bahasa yang kita pakai), seperti Bahasa Indonesia, Jawa, 
+Lampung dan Inggris. Bahasa tersebut tidak dirancangan oleh orang (meskipun beberapa ada usaha untuk membakukanya); 
+ia berevolusi secara alami.
+
+% {\bf Formal languages} are languages that are designed by people for specific applications.  For example, the 
+% notation that mathematicians use is a formal language that is particularly good at denoting relationships 
+% among numbers and symbols.  Chemists use a formal language to represent the chemical structure of molecules.  
+% And most importantly:
+
+{\bf Bahasa Formal } adalah bahasa yang dirancang oleh manusia untuk aplikasi khusus. Sebagai contoh, notasi 
+yang dipakai dalam matematika adalah bahasa formal yang digunakan untuk mengambarkan hubungkan antara angka dan simbol.
+Kimiawan menggunakan bahasa formal untuk mewakili struktur molekul kimia dan bagian terpenting:
+
+
+% \begin{quote}
+% {\bf Programming languages are formal languages that have been designed to express computations.}
+% \end{quote}
 
 \begin{quote}
-{\bf Programming languages are formal languages that have been designed to express computations.}
+	{\bf Bahasa pemrograman adalah bahasa formal yang didesain untuk menyatakan komputasi.}
 \end{quote}
 
-Formal languages tend to have strict rules about syntax.  For example, $3 + 3 = 6$ is a syntactically correct 
-mathematical statement, but $3 + = 3 \mbox{\$} 6$ is not.  $H_2O$ is a syntactically correct chemical formula, 
-but $_2Zz$ is not.
+% Formal languages tend to have strict rules about syntax.  For example, $3 + 3 = 6$ is a syntactically correct 
+% mathematical statement, but $3 + = 3 \mbox{\$} 6$ is not.  $H_2O$ is a syntactically correct chemical formula, 
+% but $_2Zz$ is not.
 
-Syntax rules come in two flavors, pertaining to {\bf tokens} and structure.  Tokens are the basic elements of 
-the language, such as words, numbers, and chemical elements.  One of the problems with $3 + = 3 \mbox{\$} 6$ 
-is that $\$$ is not a legal token in mathematics (at least as far as I know).  Similarly, $_2Zz$ is not legal 
-because there is no element with the abbreviation $Zz$.
+Bahasa formal cenderung memiliki aturan tata tulis yang ketat. Sebagai contoh, $3 + 3 = 6$ adalah pernyataan matematika
+yang benar secara sintaksis\footnote{Sintaksis sinonim dari tata tulis}. $H_2O$ adalah formula kimia yang benar tetapi
+$_2Zz$ tidak.
+
+% Syntax rules come in two flavors, pertaining to {\bf tokens} and structure.  Tokens are the basic elements of 
+% the language, such as words, numbers, and chemical elements.  One of the problems with $3 + = 3 \mbox{\$} 6$ 
+% is that $\$$ is not a legal token in mathematics (at least as far as I know).  Similarly, $_2Zz$ is not legal 
+% because there is no element with the abbreviation $Zz$.
+
+Aturan tata tulis memiliki dua pendekatan, berkaitan dengan token dan struktur. Token adalah elemen dasar dari sebuah bahasa,
+seperti kata-kata, angka, dan unsur kimia. Salah satu masalah dari $3 + = 3 \mbox{\$} 6$  adalah simbol $\$$ bukan token resmi 
+dalam matematika (yang saya tahu saat ini). Mirip dengan , $_2Zz$ yang bukan token legal dalam kimia karena tidak ada unsur 
+dengan singkatan $Zz$.
 
 \index{token}
 \index{structure}
