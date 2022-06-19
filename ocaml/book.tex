@@ -746,7 +746,7 @@ Bab selanjutnya akan memuat saran tentang awakutu dan praktik-praktik pemrograma
 % designed by people (although people try to impose some order on them); they evolved naturally.
 
 {\bf Bahasa Alami} adalah bahasa yang digunakan manusia (bahasa yang kita pakai), seperti Bahasa Indonesia, Jawa, 
-Lampung dan Inggris. Bahasa tersebut tidak dirancangan oleh orang (meskipun beberapa ada usaha untuk membakukanya); 
+Lampung dan Inggris. Bahasa tersebut tidak dirancangan oleh orang (meskipun ada beberapa usaha untuk membakukanya); 
 ia berevolusi secara alami.
 
 % {\bf Formal languages} are languages that are designed by people for specific applications.  For example, the 
@@ -772,7 +772,7 @@ Kimiawan menggunakan bahasa formal untuk mewakili struktur molekul kimia dan bag
 % but $_2Zz$ is not.
 
 Bahasa formal cenderung memiliki aturan tata tulis yang ketat. Sebagai contoh, $3 + 3 = 6$ adalah pernyataan matematika
-yang benar secara sintaksis\footnote{Sintaksis sinonim dari tata tulis}. $H_2O$ adalah formula kimia yang benar tetapi
+yang sah secara sintaksis\footnote{Sintaksis sinonim dari tata tulis}. $H_2O$ adalah formula kimia yang benar tetapi
 $_2Zz$ tidak.
 
 % Syntax rules come in two flavors, pertaining to {\bf tokens} and structure.  Tokens are the basic elements of 
@@ -781,36 +781,59 @@ $_2Zz$ tidak.
 % because there is no element with the abbreviation $Zz$.
 
 Aturan tata tulis memiliki dua pendekatan, berkaitan dengan token dan struktur. Token adalah elemen dasar dari sebuah bahasa,
-seperti kata-kata, angka, dan unsur kimia. Salah satu masalah dari $3 + = 3 \mbox{\$} 6$  adalah simbol $\$$ bukan token resmi 
-dalam matematika (yang saya tahu saat ini). Mirip dengan , $_2Zz$ yang bukan token legal dalam kimia karena tidak ada unsur 
+seperti kata-kata, angka, dan unsur kimia. Salah satu contohnya yakni $3 + = 3 \mbox{\$} 6$, simbol $\$$ bukan token yang sah 
+dalam matematika (yang saya tahu saat ini). Mirip dengan , $_2Zz$ yang bukan token sah dalam kimia karena tidak ada unsur 
 dengan singkatan $Zz$.
 
 \index{token}
 \index{structure}
 
-The second type of syntax error pertains to the structure of a statement; that is, the way the tokens are 
-arranged.  The statement $3 + = 3 \mbox{\$} 6$ is illegal because even though $+$ and $=$ are legal tokens, 
-you can't have one right after the other.  Similarly, in a chemical formula the subscript comes after the 
-element name, not before.
+% The second type of syntax error pertains to the structure of a statement; that is, the way the tokens are 
+% arranged.  The statement $3 + = 3 \mbox{\$} 6$ is illegal because even though $+$ and $=$ are legal tokens, 
+% you can't have one right after the other.  Similarly, in a chemical formula the subscript comes after the 
+% element name, not before.
+
+Jenis kesalahan sintaksis kedua berkaitan dengan struktur pernyataan; cara penyusunan token. $3 + = 3 \mbox{\$} 6$ 
+termasuk penyataan yang tidak sah, meskipun $+$ dan $=$ adalah token yang sah, masih terdapat token yang tidak sah 
+setelahnya : \mbox{\$}. Serupa dengan formula kimia, subskrip nomor atom pada notasi unsur ditulis setelah nama 
+unsur bukan sebelumnya.
+
+% \begin{ex}
+% 	Write a well-structured English sentence with invalid tokens in it.  Then write another sentence with all 
+% 	valid tokens but with invalid structure.
+	
 
 \begin{ex}
-Write a well-structured English sentence with invalid tokens in it.  Then write another sentence with all 
-valid tokens but with invalid structure.
+Tulislah sebuah kalimat Bahasa Indonesia yang terstrukur dengan baik namun tanpa token yang sah. Kemudian tulis
+pernyataan lain dengan token yang sah tetapi struktur yang tidak sah.
 \end{ex}
 
-When you read a sentence in English or a statement in a formal language, you have to figure out what the 
-structure of the sentence is (although in a natural language you do this subconsciously).  This process 
-is called {\bf parsing}.
+% When you read a sentence in English or a statement in a formal language, you have to figure out what the 
+% structure of the sentence is (although in a natural language you do this subconsciously).  This process 
+% is called {\bf parsing}.
+
+Ketika anda membaca kalimat dalam Bahasa Indonesia atau sebuah pernyataan dalam bahasa formal, anda perlu mencari tahu
+struktur dari pernyataan tersebut (meskipun dalam bahasa alami anda melakukanya dengan tidak sadar). Proses isi disebut
+ dengan {\bf parsing} (penguraian).
+
 
 \index{parse}
 
-For example, when you hear the sentence, ``The penny dropped,'' you understand that ``the penny'' is the 
-subject and ``dropped'' is the predicate.  Once you have parsed a sentence, you can figure out what it 
-means, or the semantics of the sentence.  Assuming that you know what a penny is and what it means to 
-drop, you will understand the general implication of this sentence.
+% For example, when you hear the sentence, ``The penny dropped,'' you understand that ``the penny'' is the 
+% subject and ``dropped'' is the predicate.  Once you have parsed a sentence, you can figure out what it 
+% means, or the semantics of the sentence.  Assuming that you know what a penny is and what it means to 
+% drop, you will understand the general implication of this sentence.
 
-Although formal and natural languages have many features in common---tokens, structure, syntax, and 
-semantics---there are some differences:
+Sebagai contoh, ketika anda mendengar kalimat, ``uang terjatuh'' anda mengerti bahwa ``uang'' adalah subjek
+dan ``terjatuh'' adalah predikat. Setelah anda mengurai kalimat, anda bisa mengetahui maksud atau makna dari 
+sebuah kalimat. Bayangkan anda tahu apa itu uang dan apa aritnya menjatuhkan, anda akan mengerti suratan 
+umum dari kalimat ini.
+
+% Although formal and natural languages have many features in common---tokens, structure, syntax, and 
+% semantics---there are some differences:
+
+Meskipun bahasa alami dan formal memiliki kesamaan fitur -- token, struktur, tata tulis, dan makna --
+terdapat beberapa perbedaan:
 
 \index{ambiguity}
 \index{redundancy}
@@ -818,46 +841,81 @@ semantics---there are some differences:
 
 \begin{description}
 
-\item[ambiguity:] Natural languages are full of ambiguity, which people deal with by using contextual 
-clues and other information. Formal languages are designed to be nearly or completely unambiguous, which 
-means that any statement has exactly one meaning, regardless of context.
+% \item[ambiguity:] Natural languages are full of ambiguity, which people deal with by using contextual 
+% clues and other information. Formal languages are designed to be nearly or completely unambiguous, which 
+% means that any statement has exactly one meaning, regardless of context.
 
-\item[redundancy:] In order to make up for ambiguity and reduce misunderstandings, natural languages employ 
-lots of redundancy.  As a result, they are often verbose.  Formal languages are less redundant and more 
-concise.
+\item[Ambiguitas:] Bahasa alami penuh dengan ambiguitas, kita menangani ini dengan menggunakan petunjuk kontekstual 
+\footnote{menghubungkan dengan situasi atau posisi} dan informasi lain. Bahasa formal di desain untuk sedikit atau 
+tidak memiliki ambiguitas dalam berbahasa, yang berarti satu penyataan hanya memiliki satu makna, terlepas dari konteks apapun.
 
-\item[literalness:] Natural languages are full of idiom and metaphor. If I say, ``The penny dropped,'' 
-there is probably no penny and nothing dropping\footnote{This idiom means that someone realized something 
-after a period of confusion.}.  Formal languages mean exactly what they say.
+
+% \item[redundancy:] In order to make up for ambiguity and reduce misunderstandings, natural languages employ 
+% lots of redundancy.  As a result, they are often verbose.  Formal languages are less redundant and more 
+% concise.
+
+\item[Pengulangan:] Untuk mengatasi ambiguitas dan mengurangi kesalahpahaman, bahasa alami mengandalkan 
+{\bf redundansi} (pengulangan). Hasilnya, ia sering bertele-tele. Bahasa formal lebih sedikit redundansi dan 
+lebih ringkas.
+
+% \item[literalness:] Natural languages are full of idiom and metaphor. If I say, ``The penny dropped,'' 
+% there is probably no penny and nothing dropping\footnote{This idiom means that someone realized something 
+% after a period of confusion.}.  Formal languages mean exactly what they say.
+
+\item[Makna literal:] Bahasa alami penuh dengan ungkapan dan metapora. Jika saya menyebut, ``uang terjatuh''
+ ada kemungkinan tidak ada uang atau tidak ada sesuatu yang terjatuh \footnote{Ungkapan ini berarti bahwa 
+ seseorang menyadari sesuatu setelah periode kebingungan}. Bahasa formal berarti persis dengan apa 
+ yang dikatakan. 
 
 \end{description}
 
-People who grow up speaking a natural language---everyone I know---often have a hard time adjusting to 
-formal languages.  In some ways, the difference between formal and natural language is like the 
-difference between poetry and prose, but more so:
+% People who grow up speaking a natural language---everyone I know---often have a hard time adjusting to 
+% formal languages.  In some ways, the difference between formal and natural language is like the 
+% difference between poetry and prose, but more so:
+
+Orang yang tumbuh dewasa dengan berbicara dalam bahasa alami -- semua orang yang saya kenal-- sering kesulitan 
+menyesuaikan diri dengan bahasa formal. Di sisi lain, perbedaan bahasa alami dan formal seperti perbedaan 
+antara pusisi dan prosa, tapi lebih dari itu:
 
 \index{poetry}
 \index{prose}
 
 \begin{description}
 
-\item[Poetry:] Words are used for their sounds as well as for their meaning, and the whole poem 
-together creates an effect or emotional response.  Ambiguity is not only common but often deliberate.
+% \item[Poetry:] Words are used for their sounds as well as for their meaning, and the whole poem 
+% together creates an effect or emotional response.  Ambiguity is not only common but often deliberate.
 
-\item[Prose:] The literal meaning of words is more important, and the structure contributes more 
-meaning.  Prose is more amenable to analysis than poetry but still often ambiguous.
+\item[Puisi:] Kata-kata yang  bunyinya termasuk bagian dari makna, dan keseluruhan 
+ rangkaian puisi menggugah rangsangan emosional. Keambiguitasaan banyak terjadi bahkan disengaja.
 
-\item[Programs:] The meaning of a computer program is unambiguous and literal, and can be understood 
-entirely by analysis of the tokens and structure.
+% \item[Prose:] The literal meaning of words is more important, and the structure contributes more 
+% meaning.  Prose is more amenable to analysis than poetry but still often ambiguous.
+
+\item[Prosa:] Makna dari kata-kata lebih penting dan struktur memiliki penekanan lebih pada 
+makna. Prosa lebih diterima untuk dianalisis \footnote{Analisis dalam konteks ini adalah memeriksa
+ sebab-akibat dari suatu pemaknaan} ketimbang puisi meskipun masih sering ambigu.
+
+% \item[Programs:] The meaning of a computer program is unambiguous and literal, and can be understood 
+% entirely by analysis of the tokens and structure.
+
+\item[Program:] Makna dari program komputer bersifat tidak ambigus, tersurat, dan bisa dipahami 
+seluruhnya dengan menganalisa token dan struktur program.
 
 \end{description}
 
-Here are some suggestions for reading programs (and other formal languages).  First, remember that 
-formal languages are much more dense than natural languages, so it takes longer to read them.  Also, 
-the structure is very important, so it is usually not a good idea to read from top to bottom, left 
-to right.  Instead, learn to parse the program in your head, identifying the tokens and interpreting 
-the structure.  Finally, the details matter.  Small errors in spelling and punctuation, which you can 
-get away with in natural languages, can make a big difference in a formal language.
+% Here are some suggestions for reading programs (and other formal languages).  First, remember that 
+% formal languages are much more dense than natural languages, so it takes longer to read them.  Also, 
+% the structure is very important, so it is usually not a good idea to read from top to bottom, left 
+% to right.  Instead, learn to parse the program in your head, identifying the tokens and interpreting 
+% the structure.  Finally, the details matter.  Small errors in spelling and punctuation, which you can 
+% get away with in natural languages, can make a big difference in a formal language.
+
+Berikut berapa saran saat membaca program (dan bahasa formal lainnya). Pertama, perlu diingat bahwa 
+bahasa formal lebih padat dari bahasa alami, sehingga memakan waktu untuk membacanya. Kedua,
+struktur bahasa sangatlah penting, bukan sebuah ide bagus untuk membacanya dari atas kebawah, kiri ke kanan.
+Maka, anda perlu belajar mengurai isi program di luar kepala, seperti mengenali token-token dan mengenali 
+struktur pada program. Terakhir, detail penting. Kesalahan kecil pada pembacaan dan tanda baca, yang bisa
+dimaklumi dalam bahasa alami, bisa menyebabkan perbedaan besar dalam bahasa formal.
 
 \section{The first program}
 \label{hello}
