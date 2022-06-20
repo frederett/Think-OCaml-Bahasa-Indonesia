@@ -898,7 +898,7 @@ makna. Prosa lebih diterima untuk dianalisis \footnote{Analisis dalam konteks in
 % \item[Programs:] The meaning of a computer program is unambiguous and literal, and can be understood 
 % entirely by analysis of the tokens and structure.
 
-\item[Program:] Makna dari program komputer bersifat tidak ambigus, tersurat, dan bisa dipahami 
+\item[Program:] Makna dari program komputer bersifat tidak ambigu, tersurat, dan bisa dipahami 
 seluruhnya dengan menganalisa token dan struktur program.
 
 \end{description}
@@ -917,14 +917,18 @@ Maka, anda perlu belajar mengurai isi program di luar kepala, seperti mengenali 
 struktur pada program. Terakhir, detail penting. Kesalahan kecil pada pembacaan dan tanda baca, yang bisa
 dimaklumi dalam bahasa alami, bisa menyebabkan perbedaan besar dalam bahasa formal.
 
-\section{The first program}
+% \section{The first program}
+\section{Program perdana}
 \label{hello}
 
 \index{Hello, World}
 
-Traditionally, the first program you write in a new language is called ``Hello, World!'' 
-because all it does is display the words, ``Hello, World!''  In Ocaml, one version looks 
-like this:
+% Traditionally, the first program you write in a new language is called ``Hello, World!'' 
+% because all it does is display the words, ``Hello, World!''  In Ocaml, one version looks 
+% like this:
+
+Umumnya, program yang anda tulis dalam bahasa baru dikenal ``Hello, World'' karena yang ia lakukan
+hanya menampikan kata, ``Hello, World!'' di OCaml, salah satu contohnya terlihat seperti ini:
 
 \beforeverb
 \begin{verbatim}
@@ -932,8 +936,11 @@ print_string "Hello, World!\n";;
 \end{verbatim}
 \afterverb
 
-This is an example of a {\bf print statement}, which doesn't actually print anything on paper. 
-It displays a value on the screen.  In this case, the result is:
+% This is an example of a {\bf print statement}, which doesn't actually print anything on paper. 
+% It displays a value on the screen.  In this case, the result is:
+
+Ini contoh dari pernyataan {\bf print} (cetak), bukan berarti mencetak tulisan ke atas kertas.
+Ia menampilkan nilai pada layar. Pada contoh ini, seperti ini hasilnya
 
 \beforeverb
 \begin{verbatim}
@@ -942,23 +949,39 @@ Hello, World!
 \end{verbatim}
 \afterverb
 
-The quotation marks in the program mark the beginning and end of the text to be displayed; they 
-don't appear in the result. The ``\verb"\n"'' is an {\bf escape character} \footnote{An escape character 
-is a special character within a string denoted by a ``whack'' (``\textbackslash'') followed by a character or 
-series of characters that results in a special character, such as a new line.}, specifically the 
-newline character, which tells the output to move to a new line.
+% The quotation marks in the program mark the beginning and end of the text to be displayed; they 
+% don't appear in the result. The ``\verb"\n"'' is an {\bf escape character} \footnote{An escape character 
+% is a special character within a string denoted by a ``whack'' (``\textbackslash'') followed by a character or 
+% series of characters that results in a special character, such as a new line.}, specifically the 
+% newline character, which tells the output to move to a new line.
+
+Tanda petik dua pada program menandakan awal dan akhir dari teks yang akan ditampilkan; tanda ini tidak muncul 
+saat ditampilkan. Karakter ``\verb"\n"'' disebut  {\bf escape character}  
+\footnote{escape character adalah karater khusus didalam teks (\textit{string}) dilambangkan dengan garis miring terbalik 
+(``\textbackslash'') diikuti dengan karakter atau rangkaian karakter yang menghasilkan karakter khusus, seperti baris baru.}, khusus
+untuk karakter baris teks baru, yang menampilkan output untuk pindah ke baris bawah (baru).
 
 \index{escape character}
 \index{quotation mark}
 \index{print statement}
 \index{statement!print}
 
-There's another, more general print statement called ``printf,'' which lets you do more than {\tt print\verb"_"string}.
-Printf comes from it's own {\bf module}, called Printf, meaning you call printf by typing ``Printf.printf.' 
-Modules are extensions of OCaml that often contain useful functions. Printf is a standard module, meaning
-it comes prepackaged with most OCaml installations. You can look up printf on your own if you're interested.
+% There's another, more general print statement called ``printf,'' which lets you do more than {\tt print\verb"_"string}.
+% Printf comes from it's own {\bf module}, called Printf, meaning you call printf by typing ``Printf.printf.' 
+% Modules are extensions of OCaml that often contain useful functions. Printf is a standard module, meaning
+% it comes prepackaged with most OCaml installations. You can look up printf on your own if you're interested.
 
-Alternatively, you can import the module by using the \verb"#use" directive:
+Ada kata kunci yang lebih umum untuk mencetak kelayar disebut ``printf,'' yang membolehkan anda 
+melakukan lebih dari  {\tt print\verb"_"string}. Printf berasal dari modulnya sendiri, yang disebut Printf, untuk 
+memanggil \footnote{Memanggil dalam konteks ini maksudnya menggunakan sebuah fungsi yang ada dengan sebuah nilai argumen.} 
+fungsi printf anda bisa mengetiknya dengan ``Printf.printf''\footnote{{\bf nama module}.{\it nama fungsi} seperti ini 
+format mengguankan fungsi dari sebuah modul}. Modul adalah ekstensi pada OCaml yang banyak memiliki fungsi berguna.
+Printf adalah modul standar ({\it standar library} pada bahasa lain), yang berarti modul tersebut sudah bawaan yang terinstall
+ langsung dengan OCaml, jadi tidak perlu menginstallnya lagi. Anda dapat mencoba printf sendiri jika Anda tertarik.
+
+% Alternatively, you can import the module by using the \verb"#use" directive:
+
+Kalau tidak, anda bisa mengimpor modul menggunakan {\it directives} \verb"#use":
 
 \beforeverb
 \begin{verbatim}
@@ -966,13 +989,26 @@ Alternatively, you can import the module by using the \verb"#use" directive:
 \end{verbatim}
 \afterverb
 %
-And then call printf simply as {\tt printf}. However, importing a module generally isn't advised  unless you're really going to use functions from that module a lot.
+
+% And then call printf simply as {\tt printf}. However, importing a module generally isn't advised  unless you're 
+% really going to use functions from that module a lot.
+
+Kemudian panggil printf dengan mengetik {\tt printf}. Namun, mengimpor sebuah modul umumnya tidak disarankan kecuali 
+anda akan menggunakan banyak fungsi yang ada pada modul tersebut.
 
 \index{module}
 
-Really, we could simply just type ``Hello, World!'' and get the result ``{\tt - : string = ''Hello, World!''.}''
+% Really, we could simply just type ``Hello, World!'' and get the result ``{\tt - : string = ''Hello, World!''.}''
 
-Some people judge the quality of a programming language by the simplicity of the ``Hello, World!'' program.  By this standard, OCaml does \footnote{Or can do, anyway. There are about as many different OCaml ``Hello, World!'' programs as there are OCaml programmers, all arguably equally valid.} about as well as possible.
+Sungguh, kita cukup mengetik ``Hello, World!'' dan mendapatkan hasilnya ``{\tt - : string = ''Hello, World!''.}''
+
+% Some people judge the quality of a programming language by the simplicity of the ``Hello, World!'' program.  
+% By this standard, OCaml does \footnote{Or can do, anyway. There are about as many different OCaml ``Hello, World!'' 
+% programs as there are OCaml programmers, all arguably equally valid.} about as well as possible.
+
+Sebagian orang menilai kualitas bahasa pemrograman dari kesederhanaan membuat program ``Hello, World!''.
+Dengan standar ini, OCaml melakukan \footnote{Atau bisa juga, ada banyak variasi program ``Hello, World!'' 
+dalam OCaml yang berbeda dengan programmer OCaml lainya, semuanya bisa dibilang sama-sama valid.} dengan sebaik mungkin.
 
 \section{Functional, as opposed to...?}
 
