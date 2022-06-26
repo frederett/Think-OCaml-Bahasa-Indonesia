@@ -7,6 +7,10 @@ Buku ini karya dari Allen Downey dan Nicholas Monje yang diterbitkan melalui [Gr
 Kredit gambar cover oleh:  [Vera Davidova](https://unsplash.com/s/photos/camel?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) melalui Unsplash.
   
 
+## Status penerjemahaan
+
+Dalam progress : Bagian 1.9 Glosarium (selesai).
+
 ### Motivasi menerjemahkan
 
 Pandangan saya dari buku ini, menulisan penjelasan yang mudah dipahami tentang pemrograman fungsional dan saya berharap orang lain (terkhusunya orang Indonesia) membaca buku ini.
