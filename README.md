@@ -9,7 +9,7 @@ Kredit gambar cover oleh:  [Vera Davidova](https://unsplash.com/s/photos/camel?u
 
 ## Status penerjemahaan
 
-Dalam progress : Bagian 1.9 Glosarium (selesai).
+Dalam progress : Bagian 1.10 Glosarium (selesai).
 
 ### Motivasi menerjemahkan
 
